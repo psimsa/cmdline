@@ -3,10 +3,10 @@ name: Build tobase64
 on:
   push:
     branches: [main]
-    paths: [src/**, .github/workflows/tobase64.yml]
+    paths: [src/**, .github/workflows/tobase64.yml, README.md]
   pull_request:
     branches: [main]
-    paths: [src/**, .github/workflows/tobase64.yml]
+    paths: [src/**, .github/workflows/tobase64.yml, README.md]
 
 jobs:
   build_linux:
