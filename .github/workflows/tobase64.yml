@@ -60,9 +60,9 @@ jobs:
         with:
           dotnet-version: 6.0.x
       - name: Pack
-        run: dotnet pack src/tobase64 -p:Version=0.0.1.${{github.run_number}} -o out/pack
+        run: dotnet pack src/tobase64 -p:Version=1.0.0.${{github.run_number}} -o out/pack
       - name: Push
-        run: dotnet nuget push out/pack/tobase64.0.0.1.${{github.run_number}}.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push out/pack/tobase64.1.0.0.${{github.run_number}}.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json
       - name: Publish nupkg
         if: ${{ github.event_name == 'push'}}
         uses: actions/upload-artifact@v3.1.0
