@@ -73,5 +73,6 @@ Parallel.ForEach(
         };
         updateProcess.Start();
         updateProcess.BeginOutputReadLine();
-        updateProcess.WaitForExit();
+        var exited = updateProcess.WaitForExit(60_000);
+        if (!exited) updateProcess.Kill(true);
     });
