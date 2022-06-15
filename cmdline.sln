@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DC43CF62-7EE1-4400-AC7E-982AA74E59D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bomcheck", "src\bomcheck\bomcheck.csproj", "{7C0EC273-B417-4082-A666-C926612EBEEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tobase64", "src\tobase64\tobase64.csproj", "{274C39C4-38EA-46BA-939D-92054EB16F19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C0EC273-B417-4082-A666-C926612EBEEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0EC273-B417-4082-A666-C926612EBEEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0EC273-B417-4082-A666-C926612EBEEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0EC273-B417-4082-A666-C926612EBEEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{274C39C4-38EA-46BA-939D-92054EB16F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{274C39C4-38EA-46BA-939D-92054EB16F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{274C39C4-38EA-46BA-939D-92054EB16F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{274C39C4-38EA-46BA-939D-92054EB16F19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7C0EC273-B417-4082-A666-C926612EBEEC} = {DC43CF62-7EE1-4400-AC7E-982AA74E59D0}
+		{274C39C4-38EA-46BA-939D-92054EB16F19} = {DC43CF62-7EE1-4400-AC7E-982AA74E59D0}
+	EndGlobalSection
+EndGlobal

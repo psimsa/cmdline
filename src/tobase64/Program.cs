@@ -1,4 +1,5 @@
 ﻿using System.Buffers;
+using System.Reflection;
 using System.Text;
 
 if (args.Length == 0)
@@ -21,6 +22,9 @@ if (args.Length == 0)
     }
     else
     {
+        var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "'unknown'";
+        Console.WriteLine($"{Assembly.GetExecutingAssembly().GetName().Name} version {version}");
+        
         Console.WriteLine("Usage: tobase64 <string-to-convert>");
         Console.WriteLine("       or pipe string to stdin");
         return;
