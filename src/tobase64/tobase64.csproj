@@ -16,7 +16,6 @@
     <Authors>ofcoursedude</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageId>ofcoursedude.$(AssemblyName)</PackageId>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\README.md">
