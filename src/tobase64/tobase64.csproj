@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Ofcoursedude.ConvertToBase64</RootNamespace>
+    <RootNamespace>Ofcoursedude.ToBase64</RootNamespace>
     <AssemblyName>tobase64</AssemblyName>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -11,8 +11,8 @@
     <PackageOutputPath>./bin/nupkg</PackageOutputPath>
     <Description>CLI-based string to base 64 converter</Description>
     <Copyright>MIT</Copyright>
-    <PackageProjectUrl>https://github.com/ofcoursedude/base64-converter</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ofcoursedude/base64-converter</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ofcoursedude/cmdline</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ofcoursedude/cmdline</RepositoryUrl>
     <Authors>ofcoursedude</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>

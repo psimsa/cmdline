@@ -2,14 +2,19 @@ name: Build tobase64
 
 on:
   push:
-    branches: [main]
-    paths: [src/**, .github/workflows/tobase64.yml]
-  pull_request:
-    branches: [main]
-    paths: [src/**, .github/workflows/tobase64.yml]
-
+    paths: [src/tobase64/**, .github/workflows/tobase64.yml, README.md]
+  workflow_dispatch:
+    
 jobs:
-  build_linux:
+  build:
+    strategy:
+      matrix:
+        os: [linux, windows]
+        include:
+          - os: linux
+            runtime: linux-x64
+          - os: windows
+            runtime: win10-x64
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,38 +22,15 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-      - name: Build Linux
-        run: dotnet build src/tobase64 --self-contained -r linux-x64
-      - name: Publish Linux
-        if: ${{ github.event_name == 'push'}}
-        run: dotnet publish src/tobase64/tobase64.csproj -o out/linux -r linux-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
-      - name: Upload artifacts Linux
-        if: ${{ github.event_name == 'push'}}
+      - name: Build ${{ matrix.os }}
+        run: dotnet build src/tobase64 --self-contained -r ${{ matrix.runtime }}
+      - name: Publish ${{ matrix.os }}
+        run: dotnet publish src/tobase64/tobase64.csproj -o out/${{ matrix.os }} -r ${{ matrix.runtime }} --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
+      - name: Upload artifacts ${{ matrix.os }}
         uses: actions/upload-artifact@v3.1.0
         with:
-          name: tobase64-linux
-          path: out/linux/tobase64
-          retention-days: 30
-
-  build_windows:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: 6.0.x
-      - name: Build Windows
-        run: dotnet build src/tobase64 --self-contained -r win10-x64
-      - name: Publish Windows
-        if: ${{ github.event_name == 'push'}}
-        run: dotnet publish src/tobase64/tobase64.csproj -o out/windows -r win10-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
-      - name: Upload artifacts Windows
-        if: ${{ github.event_name == 'push'}}
-        uses: actions/upload-artifact@v3.1.0
-        with:
-          name: tobase64-windows
-          path: out/windows/tobase64.exe
+          name: tobase64-${{ matrix.os }}
+          path: out/${{ matrix.os }}
           retention-days: 30
 
   build_and_pack:
@@ -62,6 +44,7 @@ jobs:
       - name: Pack
         run: dotnet pack src/tobase64 -p:Version=1.0.0.${{github.run_number}} -o out/pack
       - name: Push
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: dotnet nuget push out/pack/tobase64.1.0.0.${{github.run_number}}.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json
       - name: Publish nupkg
         if: ${{ github.event_name == 'push'}}
