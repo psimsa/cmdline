@@ -15,9 +15,10 @@
     <RepositoryUrl>https://github.com/ofcoursedude/bomcheck</RepositoryUrl>
     <Authors>ofcoursedude</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageId>ofcoursedude.$(AssemblyName)</PackageId>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\..\README.md">
+    <None Include=".\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
