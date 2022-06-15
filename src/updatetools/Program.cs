@@ -47,8 +47,8 @@ getToolsListProcess.BeginOutputReadLine();
 getToolsListProcess.WaitForExit();
 
 Parallel.ForEach(
-    outputLines.Skip(2).Select(l => l.Split(' ')[0]),
-    new ParallelOptions() {MaxDegreeOfParallelism = Environment.ProcessorCount},
+    outputLines.Skip(2).Select(l => l.Split(' ', 2)[0]),
+    new ParallelOptions() {MaxDegreeOfParallelism = 4},
     tool =>
     {
         var updateProcess = new Process()
