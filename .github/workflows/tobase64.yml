@@ -22,15 +22,15 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-      - name: Build {{ matrix.os }}
-        run: dotnet build src/tobase64 --self-contained -r {{ matrix.runtime }}
+      - name: Build ${{ matrix.os }}
+        run: dotnet build src/tobase64 --self-contained -r ${{ matrix.runtime }}
       - name: Publish Linux
-        run: dotnet publish src/tobase64/tobase64.csproj -o out/{{ matrix.os }} -r {{ matrix.runtime }} --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
-      - name: Upload artifacts {{ matrix.os }}
+        run: dotnet publish src/tobase64/tobase64.csproj -o out/${{ matrix.os }} -r ${{ matrix.runtime }} --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
+      - name: Upload artifacts ${{ matrix.os }}
         uses: actions/upload-artifact@v3.1.0
         with:
-          name: tobase64-{{ matrix.os }}
-          path: out/{{ matrix.os }}/tobase64
+          name: tobase64-${{ matrix.os }}
+          path: out/${{ matrix.os }}/tobase64
           retention-days: 30
 
   build_and_pack:
