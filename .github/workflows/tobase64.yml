@@ -44,7 +44,7 @@ jobs:
       - name: Pack
         run: dotnet pack src/tobase64 -p:Version=1.0.0.${{github.run_number}} -o out/pack
       - name: Push
-        if: ${{ github.event_name == 'push'}}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: dotnet nuget push out/pack/tobase64.1.0.0.${{github.run_number}}.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json
       - name: Publish nupkg
         if: ${{ github.event_name == 'push'}}
