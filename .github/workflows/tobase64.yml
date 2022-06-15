@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v3.1.0
         with:
           name: tobase64-${{ matrix.os }}
-          path: out/${{ matrix.os }}/tobase64
+          path: out/${{ matrix.os }}
           retention-days: 30
 
   build_and_pack:
