@@ -47,7 +47,7 @@ getToolsListProcess.BeginOutputReadLine();
 getToolsListProcess.WaitForExit();
 
 Parallel.ForEach(
-    outputLines.Skip(2).Select(l => l.Split(' ', 2)[0]),
+    outputLines.Skip(2).Select(l => l.Split(' ', 2)[0]).OrderBy(t => t),
     new ParallelOptions() {MaxDegreeOfParallelism = 4},
     tool =>
     {
@@ -59,7 +59,7 @@ Parallel.ForEach(
                 Arguments = $"tool update {tool} {globalSwitch}",
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
-                RedirectStandardError = false,
+                RedirectStandardError = true,
                 CreateNoWindow = true
             }
         };
@@ -71,8 +71,18 @@ Parallel.ForEach(
                 Console.WriteLine(e.Data);
             }
         };
+
+        updateProcess.ErrorDataReceived += (sender, e) =>
+        {
+            if (e.Data != null)
+            {
+                Console.WriteLine($"Error updating {tool}:{Environment.NewLine}\t{e.Data}");
+            }
+        };
         updateProcess.Start();
         updateProcess.BeginOutputReadLine();
+        updateProcess.BeginErrorReadLine();
+
         var exited = updateProcess.WaitForExit(60_000);
         if (!exited) updateProcess.Kill(true);
     });
