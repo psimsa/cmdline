@@ -49,7 +49,7 @@ var bomFiles = 0;
 var fixedFiles = 0;
 var skippedFiles = 0;
 
-var files = Directory.GetFiles(path, "*.*", new EnumerationOptions()
+var files = Directory.GetFiles(path, "*", new EnumerationOptions()
 {
     AttributesToSkip = FileAttributes.Hidden | FileAttributes.System,
     IgnoreInaccessible = true,
