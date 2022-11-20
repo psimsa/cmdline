@@ -27,7 +27,7 @@ jobs:
       - name: Publish ${{ matrix.os }}
         run: dotnet publish src/updatetools/updatetools.csproj -o out/${{ matrix.os }} -r ${{ matrix.runtime }} --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
       - name: Upload artifacts ${{ matrix.os }}
-        uses: actions/upload-artifact@v3.1.0
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: updatetools-${{ matrix.os }}
           path: out/${{ matrix.os }}
@@ -48,7 +48,7 @@ jobs:
         run: dotnet nuget push out/pack/ofcoursedude.dotnet-updatetools.1.0.0.${{github.run_number}}.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json
       - name: Publish nupkg
         if: ${{ github.event_name == 'push'}}
-        uses: actions/upload-artifact@v3.1.0
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: updatetools-nupkg
           path: out/pack/**
