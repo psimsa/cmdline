@@ -11,9 +11,9 @@
     <PackageOutputPath>./bin/nupkg</PackageOutputPath>
     <Description>CLI-based BOM checker and remover</Description>
     <Copyright>MIT</Copyright>
-    <PackageProjectUrl>https://github.com/ofcoursedude/cmdline</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ofcoursedude/cmdline</RepositoryUrl>
-    <Authors>ofcoursedude</Authors>
+    <PackageProjectUrl>https://github.com/psimsa/cmdline</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/psimsa/cmdline</RepositoryUrl>
+    <Authors>Pavel Simsa</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageId>ofcoursedude.$(AssemblyName)</PackageId>
   </PropertyGroup>
