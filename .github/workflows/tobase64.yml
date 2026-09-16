@@ -21,7 +21,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v6
         with:
-          dotnet-version: 7.0.410
+          dotnet-version: 8.0.425
       - name: Build ${{ matrix.os }}
         run: dotnet build src/tobase64 --self-contained -r ${{ matrix.runtime }}
       - name: Publish ${{ matrix.os }}
@@ -40,7 +40,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v6
         with:
-          dotnet-version: 7.0.410
+          dotnet-version: 8.0.425
       - name: Pack
         run: dotnet pack src/tobase64 -p:Version=1.0.0.${{github.run_number}} -o out/pack
       - name: Push
